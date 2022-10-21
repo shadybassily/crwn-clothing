@@ -1,0 +1,51 @@
+
+.menu-directory {
+  display: flex;
+  flex-wrap: wrap;
+  width: 85%;
+  margin: 0px auto;
+}
+
+.menu-item {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 43vh;
+  width: 80%;
+  margin: 10px auto;
+  transition: all 0.5s;
+}
+.menu-item:nth-child(4),
+.menu-item:nth-child(5) {
+  height: 50vh;
+}
+.menu-item:hover {
+  background-size: 110% 110%;
+  background-position: center;
+}
+.menu-item .content {
+  background-color: rgba(255, 255, 255, 0.566);
+  padding: 25px 10px;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.menu-item .content:hover {
+  background-color: white;
+}
+
+@media (width > 1000px) {
+  .menu-item:nth-child(4),
+  .menu-item:nth-child(5) {
+    width: 49.3%;
+  }
+
+  .menu-item {
+    width: 32.5%;
+    margin: 5px auto;
+  }
+}
