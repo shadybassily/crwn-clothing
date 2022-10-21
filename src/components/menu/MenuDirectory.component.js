@@ -1,5 +1,5 @@
 import React from 'react'
-import MenuItem from './MenuItem'
+import MenuItem from './MenuItem.component'
 
 export default function MenuDirectory() {
   const sections = [
@@ -37,7 +37,7 @@ export default function MenuDirectory() {
     }
   ];
   return (
-    <div className='menu-directory'>
+    <div className='parent-container menu-directory'>
       {sections.map(section => {
         return <MenuItem section={section} key={section.id}/>
       })}

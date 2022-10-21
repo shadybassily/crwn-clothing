@@ -2,8 +2,6 @@
 .menu-directory {
   display: flex;
   flex-wrap: wrap;
-  width: 85%;
-  margin: 0px auto;
 }
 
 .menu-item {
@@ -33,6 +31,7 @@
   text-align: center;
   cursor: pointer;
   transition: all 0.3s;
+  width: 130px;
 }
 .menu-item .content:hover {
   background-color: white;
