@@ -1,5 +1,5 @@
 import React from "react";
-import CollectionPreview from "../../components/collection preview/CollectionPreview.component";
+import CollectionPreview from "../../components/collection-preview/CollectionPreview.component";
 import SHOP_DATA from "./shop.data";
 export default function Shop() {
   const collections = SHOP_DATA;

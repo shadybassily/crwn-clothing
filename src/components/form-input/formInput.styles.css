@@ -1,0 +1,46 @@
+.input-holder {
+  position: relative;
+  width: 100%;
+  margin: 5px 0;
+}
+.input-holder input {
+  padding: 10px;
+  width: 100%;
+  outline: none;
+  border: 1px solid black;
+  background-color: transparent;
+}
+.input-holder .label {
+  position: absolute;
+  z-index: -1;
+  left: 15px;
+  top: 10px;
+  transition: all 0.3s;
+}
+
+.input-holder .focused {
+  position: absolute;
+  background-color: red;
+  left: 10px;
+  top: -12px;
+  padding: 0px 5px;
+  z-index: 1;
+}
+/* to make sure the effect is on when the user types smt and no focus */
+input:focus + .label,
+input:not(:placeholder-shown) + .label {
+  position: absolute;
+  background-color: white;
+  left: 5px;
+  top: -12px;
+  padding: 0px 5px;
+  z-index: 1;
+}
+
+.show-password{
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  cursor: pointer;
+}
+

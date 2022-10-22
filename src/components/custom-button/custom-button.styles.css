@@ -1,0 +1,29 @@
+.custom-button {
+  all: unset;
+  border: 1px solid black;
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 5px 0px;
+}
+
+.custom-button:hover{
+    background-color: #000;
+    color: #fff;
+}
+.google{
+    background-color: #0651ddd4;
+    border: none;
+    color: #fff;
+}
+
+.google:hover{
+    background-color: #0652DD;
+    color: #fff;
+}
+.brand-icon{
+    padding-right: 15px;
+}

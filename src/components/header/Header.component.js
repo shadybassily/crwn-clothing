@@ -9,7 +9,7 @@ export default function Header() {
       <ul className="header-links">
         <li><Link to='/shop' className="header-link hover-underline-animation">shop</Link></li>
         <li><Link to='/shop' className="header-link hover-underline-animation">contact</Link></li>
-        <li><Link to='/shop' className="header-link hover-underline-animation">sign in</Link></li>
+        <li><Link to='/sign-in' className="header-link hover-underline-animation">sign in</Link></li>
         <li><Link to='/shop' className="header-link">cart</Link></li>
       </ul>
     </nav>
