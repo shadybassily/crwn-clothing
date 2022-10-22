@@ -9,8 +9,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 //styling
 import "./signin.form.styles.css";
 import Error from "../error/Error.component";
+//firebase
+import {auth, provider} from '../../config/firebase'
+import { signInWithPopup } from "firebase/auth";
 
 export default function SignInForm() {
+  // schema and form
   const schema = yup.object().shape({
     email: yup
       .string()
@@ -25,9 +29,17 @@ export default function SignInForm() {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  //sign in 
   const onSubmit = (data) => {
     console.log(data);
   };
+
+  //sign in with google
+  const googleSignIn= async (e)=>{
+    e.preventDefault()
+    const result = await signInWithPopup(auth, provider)
+    console.log(result) 
+  }
   return (
     <form className="sign-in-form" onSubmit={handleSubmit(onSubmit)}>
       <h2>SIGN IN</h2>
@@ -41,7 +53,7 @@ export default function SignInForm() {
       <Error message={errors.password?.message} />
       <div className="buttons-container">
         <CustomButton>Sign In</CustomButton>
-        <CustomButton google={true}>Continue With Google </CustomButton>
+        <CustomButton google={true} googleSignIn={googleSignIn}>Continue With Google </CustomButton>
       </div>
     </form>
   );
