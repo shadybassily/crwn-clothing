@@ -33,6 +33,9 @@
   transition: all 0.3s;
   width: 130px;
 }
+.menu-item .content .shop-now {
+  font-size: 25px;
+}
 .menu-item .content:hover {
   background-color: white;
 }

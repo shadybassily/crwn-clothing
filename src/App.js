@@ -7,10 +7,12 @@ import HomePage from "./pages/homepage/HomePage.component";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Section from "./pages/section/Section.component";
 import Shop from "./pages/shop/Shop.component";
+import Header from "./components/header/Header.component";
 
 function App() {
   return (
     <Router>
+    <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<Shop />} />

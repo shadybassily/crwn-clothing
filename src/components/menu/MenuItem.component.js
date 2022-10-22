@@ -14,7 +14,7 @@ export default function MenuItem({ section }) {
     >
       <div className="content">
         <h3 className="title">{section.title}</h3>
-        <span>SHOP NOW</span>
+        <span className="shop-now">SHOP NOW</span>
       </div>
     </div>
   );
