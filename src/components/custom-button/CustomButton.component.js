@@ -7,14 +7,14 @@ const googleIcon = <FontAwesomeIcon icon={faGoogle} />;
 export default function CustomButton(props) {
   if (props.google) {
     return (
-      <button onClick={props.googleSignIn} className="custom-button google">
+      <button onClick={props.googleSignIn} className="custom-button google" >
         <span className="brand-icon">{googleIcon}</span>
         {props.children}
       </button>
     );
   }
   return (
-    <button className="custom-button">
+    <button className={`custom-button ${props.className}`}>
       {props.children}
     </button>
   );

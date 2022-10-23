@@ -1,10 +1,15 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {getAuth, GoogleAuthProvider} from 'firebase/auth'
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth, GoogleAuthProvider, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
 
-// Your web app's Firebase configuration
 const {
   REACT_APP_FIREBASE_API_KEY,
   REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -15,7 +20,7 @@ const {
 } = process.env;
 
 const firebaseConfig = {
-  apiKey:REACT_APP_FIREBASE_API_KEY,
+  apiKey: REACT_APP_FIREBASE_API_KEY,
   authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
   projectId: REACT_APP_FIREBASE_PROJECT_ID,
   storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
@@ -25,5 +30,34 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app)
-export const provider = new GoogleAuthProvider()
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+export const provider = new GoogleAuthProvider();
+
+export const isUserExist = async (user) => {
+  const usersRef = collection(db, "users");
+  const userDoc = query(usersRef, where("email", "==", user.email));
+  const data = await getDocs(userDoc);
+  return !data.empty;
+};
+
+export const CreateUserProfile = async (user, additionalData) => {
+  console.log(user)
+  if(!user) return
+  const exist = await isUserExist(user);
+  if (exist) return;
+  const { displayName, email } = user;
+  const createdAt = new Date();
+  try {
+    console.log('reached')
+    await addDoc(collection(db, "users"), {
+      displayName,
+      email,
+      createdAt,
+      userId:user.uid,
+      ...additionalData,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};

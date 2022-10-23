@@ -11,11 +11,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 //styling
 import "../form.styles.css";
 //firebase
-import {auth, provider} from '../../../config/firebase'
+import {auth, provider, CreateUserProfile} from '../../../config/firebase'
 import { signInWithPopup } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function SignInForm() {
+  const [user] = useAuthState(auth)
   const navigate = useNavigate()
   // schema and form
   const schema = yup.object().shape({
@@ -40,7 +42,9 @@ export default function SignInForm() {
   //sign in with google
   const googleSignIn= async (e)=>{
     e.preventDefault()
-    const result = await signInWithPopup(auth, provider)
+    const data = await signInWithPopup(auth, provider)
+    //adding the user to the db
+    await CreateUserProfile(data.user)
     navigate('/')
   }
   return (

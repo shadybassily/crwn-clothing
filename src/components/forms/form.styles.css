@@ -27,16 +27,16 @@
   }
   .buttons-container {
     flex-direction: column;
-    width: auto;
+    max-width: 100%;
   }
 }
 @media (1100px >= width > 750px) {
   .form {
-    width: 50%;
+    width: 60%;
   }
 }
 @media (width > 1100px) {
   .form {
-    width: 35%;
+    width: 40%;
   }
 }

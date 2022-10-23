@@ -1,22 +1,19 @@
 .custom-button {
-  all: unset;
+  background-color: #000;
+  color: #fff;
   border: 1px solid black;
-  padding: 5px 20px;
-  border-radius: 5px;
+  padding: 10px 23px;
+  border-radius: 1px;
+  margin-top: 5px;
   font-weight: bold;
   transition: all 0.2s;
   letter-spacing: 1px;
   text-align: center;
-  margin: 5px 0px;
 }
 
-.custom-button:hover{
-    background-color: #000;
-    color: #fff;
-}
 .google{
     background-color: #0651ddd4;
-    border: none;
+    border: 1px solid #0652DD;
     color: #fff;
 }
 
@@ -24,6 +21,11 @@
     background-color: #0652DD;
     color: #fff;
 }
+.register-button{
+    width: 80%;
+    margin: 0 auto;
+}
 .brand-icon{
     padding-right: 15px;
 }
+

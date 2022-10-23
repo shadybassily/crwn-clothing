@@ -31,14 +31,17 @@
   text-align: center;
   cursor: pointer;
   transition: all 0.3s;
-  width: 130px;
+  padding: 15px 25px;
+  
 }
 .menu-item .content .shop-now {
   font-size: 25px;
+  font-weight: bold;
 }
 .menu-item .content:hover {
   background-color: white;
 }
+
 
 @media (width > 1000px) {
   .menu-item:nth-child(4),
