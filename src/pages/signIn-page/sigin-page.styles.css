@@ -1,0 +1,16 @@
+.signin-register{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.signin-register p{
+    margin: 0 30px;
+    padding: 5px 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 20px;
+}
+.selected {
+    border-bottom: 1px solid gray;
+}

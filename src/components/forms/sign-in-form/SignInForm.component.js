@@ -1,19 +1,22 @@
 import React from "react";
 //components
-import FormInput from "../form-input/FormInput.component";
-import CustomButton from "../custom-button/CustomButton.component";
+import FormInput from "../../form-input/FormInput.component";
+import CustomButton from "../../custom-button/CustomButton.component";
+import Error from "../../error/Error.component";
+
 //form
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 //styling
-import "./signin.form.styles.css";
-import Error from "../error/Error.component";
+import "../form.styles.css";
 //firebase
-import {auth, provider} from '../../config/firebase'
+import {auth, provider} from '../../../config/firebase'
 import { signInWithPopup } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignInForm() {
+  const navigate = useNavigate()
   // schema and form
   const schema = yup.object().shape({
     email: yup
@@ -38,19 +41,19 @@ export default function SignInForm() {
   const googleSignIn= async (e)=>{
     e.preventDefault()
     const result = await signInWithPopup(auth, provider)
-    console.log(result) 
+    navigate('/')
   }
   return (
-    <form className="sign-in-form" onSubmit={handleSubmit(onSubmit)}>
+    <form className="form" onSubmit={handleSubmit(onSubmit)}>
       <h2>SIGN IN</h2>
       <FormInput label="Email" type="text" register={register("email")} />
       <Error message={errors.email?.message} />
-      <FormInput
-        label="Password"
-        type="password"
-        register={register("password")}
-      />
+
+      <FormInput label="Password" type="password" register={register("password")}/>
       <Error message={errors.password?.message} />
+
+      <Link className="forgot-password">Forgot Your Password?</Link>
+      
       <div className="buttons-container">
         <CustomButton>Sign In</CustomButton>
         <CustomButton google={true} googleSignIn={googleSignIn}>Continue With Google </CustomButton>
