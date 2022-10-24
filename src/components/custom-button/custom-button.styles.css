@@ -15,9 +15,9 @@
   color: #fff;
 }
 .google {
-  background-color: #0651ddd4;
+  background-color: #fff;
   border: 1px solid #0652dd;
-  color: #fff;
+  color: #0652dd;;
 }
 
 .google:hover {

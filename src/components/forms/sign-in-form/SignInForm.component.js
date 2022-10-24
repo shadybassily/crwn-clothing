@@ -11,7 +11,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import "../form.styles.css";
 //firebase
 import {auth, provider, CreateUserProfile} from '../../../config/firebase'
-import { signInWithPopup, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 //context
 import { useContext } from "react";
@@ -19,7 +19,7 @@ import { appContext } from "../../../App";
 
 export default function SignInForm() {
   const {currentUser} = useContext(appContext)
-  //to send
+  const [forgetPasswordEmail, setForgetPasswordEmail] = useState("")
   const [emailNotFoundError, setEmailNotFoundError] = useState("")
   const navigate = useNavigate()
   // schema and form
@@ -62,18 +62,30 @@ export default function SignInForm() {
     //adding the user to the db
     await CreateUserProfile(data.user)
   }
-
+  //preparing the email to send the reset password link to
+  const handleEmailChange = (value)=>{
+    setForgetPasswordEmail(value)
+  }
+  //FORGET PASSWORD
+  const handleResetPassword = async ()=>{
+    try{ 
+      await sendPasswordResetEmail(auth, forgetPasswordEmail)
+      setEmailNotFoundError("")
+     } catch(err){
+      setEmailNotFoundError("There is no account attached to this email")
+     }
+  }
 
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
       <h2>SIGN IN</h2>
-      <FormInput label="Email" type="text" register={register("email")} />
+      <FormInput label="Email" type="text" register={register("email")} handleEmailChange={handleEmailChange}/>
       <Error message={errors.email?.message} />   
 
       <FormInput label="Password" type="password" register={register("password")}/>
       {errors.password?.message ? <Error message={errors.password?.message} /> : emailNotFoundError ? <Error message={emailNotFoundError} /> : <Error />  }  
 
-      <Link className="forgot-password" >Forgot Your Password?</Link>
+      <Link className="forgot-password" onClick={handleResetPassword} >Forgot Your Password?</Link>
       
       <div className="buttons-container">
         <CustomButton>Sign In</CustomButton>
