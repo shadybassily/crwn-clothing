@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, sendEmailVerification, createUserWithEmailAndPassword } from "firebase/auth";
 import {
   addDoc,
   collection,
@@ -33,23 +33,21 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const provider = new GoogleAuthProvider();
-
+//does user exist in database
 export const isUserExist = async (user) => {
   const usersRef = collection(db, "users");
   const userDoc = query(usersRef, where("email", "==", user.email));
   const data = await getDocs(userDoc);
   return !data.empty;
 };
-
+//add the user to the database
 export const CreateUserProfile = async (user, additionalData) => {
-  console.log(user)
   if(!user) return
   const exist = await isUserExist(user);
   if (exist) return;
   const { displayName, email } = user;
   const createdAt = new Date();
   try {
-    console.log('reached')
     await addDoc(collection(db, "users"), {
       displayName,
       email,
@@ -61,3 +59,28 @@ export const CreateUserProfile = async (user, additionalData) => {
     console.log(err);
   }
 };
+export const signUpWithEmail = async (data,setEmailInUseError) => {
+  try{
+    const { email, password, fname, lname} = data;
+    const displayName = `${fname} ${lname}`
+    //authenticating the user
+    const result = await createUserWithEmailAndPassword(auth, email, password)
+    //preparing the data that 
+    //will be added to the data base
+    
+    const userData = {
+      displayName,
+      email,
+      uid: result.user.uid
+    }
+    await CreateUserProfile(userData)
+    setEmailInUseError("");
+  }
+  catch(err){
+    setEmailInUseError("Email Already In Use");
+  }
+  
+}
+export const verifyEmail = async (user) => {
+  await sendEmailVerification(user);
+}

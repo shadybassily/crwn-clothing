@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import Register from "../../components/forms/registration-form/RegistrationForm.component";
 import SignInForm from "../../components/forms/sign-in-form/SignInForm.component";
 import "./sigin-page.styles.css";
+import { useContext } from "react";
+import { appContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 export default function SignIn() {
+  const {currentUser} = useContext(appContext)
+  const navigate = useNavigate()
   //which form the user selects
   //to toggle between them
-  const[selectedForm, setSelectedForm] = useState('register')
+  const[selectedForm, setSelectedForm] = useState('sign in')
   const handleChangeForm = (e) =>{
     setSelectedForm(e.target.innerHTML)
   }

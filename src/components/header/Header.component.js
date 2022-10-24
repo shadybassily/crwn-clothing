@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { appContext } from "../../App";
 
 import "./header.styles.css";
 import logo from "../../assets/images/crown.svg";
@@ -8,19 +9,13 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
 import { signOut } from "firebase/auth";
 
-//
-import { useContext } from "react";
-import { appContext } from "../../App";
 export default function Header() {
-
   const {currentUser} = useContext(appContext)
   const navigate = useNavigate()
   const handleLogOut = async()=>{
     await signOut(auth)
     navigate('/')
   }
-
-
 
   return (
     <nav className="parent-container">

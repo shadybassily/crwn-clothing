@@ -10,11 +10,14 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 //firebase
-import { auth,CreateUserProfile } from "../../../config/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  auth,
+  CreateUserProfile,
+} from "../../../config/firebase";
+import { createUserWithEmailAndPassword,signOut,sendEmailVerification } from "firebase/auth";
 
 export default function Register() {
-  const [emailInUseError, setEmailInUseError] = useState("")
+  const [emailInUseError, setEmailInUseError] = useState("");
   const navigate = useNavigate();
   const schema = yup.object().shape({
     fname: yup
@@ -51,25 +54,27 @@ export default function Register() {
   });
 
   //sign up
-  const onSubmit = async (data) => {
+ const onSubmit = async (data) => {
     try{
       const { email, password, fname, lname} = data;
-      const displayName = `${fname} ${lname}`
       //authenticating the user
       const result = await createUserWithEmailAndPassword(auth, email, password)
       //preparing the data that 
       //will be added to the data base
+      const displayName = `${fname} ${lname}`
       const userData = {
         displayName,
         email,
         uid: result.user.uid
       }
-      setEmailInUseError("")
-      console.log(userData)
+      //send the verification code and log the user out
+      await sendEmailVerification(auth.currentUser)
+      navigate("/verify")
       //add the user to the database
       await CreateUserProfile(userData)
-      navigate("/")
-    }catch(err){
+      setEmailInUseError("")
+    } catch(err) {
+      console.log(err)
       setEmailInUseError("Email Already In Use")
     }
   };
@@ -79,12 +84,18 @@ export default function Register() {
       <h2>REGISTER</h2>
       <FormInput label="First Name" type="text" register={register("fname")} />
       <Error message={errors.fname?.message} />
-     
+
       <FormInput label="Last Name" type="text" register={register("lname")} />
       <Error message={errors.lname?.message} />
 
       <FormInput label="Email" type="text" register={register("email")} />
-      {errors.email?.message ? <Error message={errors.email?.message} /> : emailInUseError ? <Error message={emailInUseError} /> : <Error />  }  
+      {errors.email?.message ? (
+        <Error message={errors.email?.message} />
+      ) : emailInUseError ? (
+        <Error message={emailInUseError} />
+      ) : (
+        <Error />
+      )}
 
       <FormInput
         label="Password"

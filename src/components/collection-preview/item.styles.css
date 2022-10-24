@@ -25,6 +25,12 @@
   height: 50px;
   font-size: 20px;
 }
-
+@media(width < 800px){
+  .photo {
+    width: 180px;
+    height: 210px;
+    background-size: 100% 100%;
+  }
+}
 
 

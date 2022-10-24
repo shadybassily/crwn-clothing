@@ -15,7 +15,7 @@ export default function FormInput({ label, type, register }) {
   };
   return (
     <div className="input-holder">
-      <input type={inputType} placeholder=" " {...register}/>
+      <input type={inputType} placeholder=" " {...register} />
       <label className="label">{label}</label>
       {type === "password" && (
         <span

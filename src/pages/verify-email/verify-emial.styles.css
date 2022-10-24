@@ -1,0 +1,22 @@
+.verification-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.verification-message{
+    box-shadow: 10px 10px 15px rgba(128, 128, 128, 0.363);
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+    padding: 50px;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.verification-message .user-email {
+    font-weight: bold;
+    text-transform: none;
+    margin-top: -15px;
+}
