@@ -13,7 +13,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "./config/firebase";
-import VerifyEmail from "./pages/verify-email/VerifyEmail.component";
+import ConfirmMsg from "./pages/confirm-msg/ConfirmMsg.component.";
 import EmailNotVerified from "./components/verify-email/EmailNotVerified.component";
 export const appContext = createContext();
 
@@ -36,7 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/verify" element={<VerifyEmail />} />
+          <Route path="/confirmation/:opt" element={<ConfirmMsg />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/:section" element={<Section />} />
         </Routes>

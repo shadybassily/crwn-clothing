@@ -12,7 +12,7 @@ import "../form.styles.css";
 //firebase
 import {auth, provider, CreateUserProfile} from '../../../config/firebase'
 import { signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 //context
 import { useContext } from "react";
 import { appContext } from "../../../App";
@@ -70,6 +70,7 @@ export default function SignInForm() {
   const handleResetPassword = async ()=>{
     try{ 
       await sendPasswordResetEmail(auth, forgetPasswordEmail)
+      navigate('/confirmation/forget-password',{state:forgetPasswordEmail})
       setEmailNotFoundError("")
      } catch(err){
       setEmailNotFoundError("There is no account attached to this email")

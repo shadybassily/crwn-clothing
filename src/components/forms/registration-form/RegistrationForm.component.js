@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../form.styles.css";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 //components
 import Error from "../../error/Error.component";
 import FormInput from "../../form-input/FormInput.component";
@@ -14,7 +14,7 @@ import {
   auth,
   CreateUserProfile,
 } from "../../../config/firebase";
-import { createUserWithEmailAndPassword,signOut,sendEmailVerification } from "firebase/auth";
+import { createUserWithEmailAndPassword,sendEmailVerification } from "firebase/auth";
 
 export default function Register() {
   const [emailInUseError, setEmailInUseError] = useState("");
@@ -69,7 +69,7 @@ export default function Register() {
       }
       //send the verification code and log the user out
       await sendEmailVerification(auth.currentUser)
-      navigate("/verify")
+      navigate("/confirmation/verify-email")
       //add the user to the database
       await CreateUserProfile(userData)
       setEmailInUseError("")
