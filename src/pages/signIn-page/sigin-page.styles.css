@@ -6,10 +6,11 @@
 }
 .signin-register p{
     margin: 0 30px;
-    padding: 5px 15px;
+    padding: 5px 25px;
     text-transform: uppercase;
     cursor: pointer;
     font-size: 20px;
+    
 }
 .selected {
     border-bottom: 1px solid gray;

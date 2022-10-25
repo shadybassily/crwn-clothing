@@ -18,7 +18,7 @@
 }
 .menu-item:nth-child(4),
 .menu-item:nth-child(5) {
-  height: 50vh;
+  height: 55vh;
 }
 .menu-item:hover {
   background-size: 110% 110%;
@@ -42,6 +42,21 @@
   background-color: white;
 }
 
+@media (width <800px) {
+  .menu-item {
+    width: 65%;
+    margin: 5px auto;
+  }
+  .menu-item .content {
+    padding: 10px 20px;
+  }
+}
+@media (width > 800px) {
+  .menu-item {
+    width: 65%;
+    margin: 5px auto;
+  }
+}
 
 @media (width > 1000px) {
   .menu-item:nth-child(4),

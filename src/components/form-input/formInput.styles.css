@@ -29,12 +29,12 @@
 /* to make sure the effect is on when the user types smt and no focus */
 input:focus + .label,
 input:not(:placeholder-shown) + .label {
+  z-index: 1;
   position: absolute;
   background-color: white;
   left: 5px;
   top: -12px;
   padding: 0px 5px;
-  z-index: 1;
 }
 
 .show-password{

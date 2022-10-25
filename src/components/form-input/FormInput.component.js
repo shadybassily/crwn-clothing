@@ -17,7 +17,7 @@ export default function FormInput({ label, type, register,handleEmailChange }) {
     <div className="input-holder">
       <input type={inputType} placeholder=" " {...register} onInput={(e)=>{inputType === 'text' && handleEmailChange(e.target.value)}}/>
       <label className="label">{label}</label>
-      {type === "password" && (
+      {type === "password" && ( 
         <span
           className="show-password"
           onMouseEnter={showPassword}

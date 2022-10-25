@@ -12,13 +12,11 @@ import "../form.styles.css";
 //firebase
 import {auth, provider, CreateUserProfile} from '../../../config/firebase'
 import { signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-//context
-import { useContext } from "react";
-import { appContext } from "../../../App";
+import { Link, useNavigate } from "react-router-dom";
+
+
 
 export default function SignInForm() {
-  const {currentUser} = useContext(appContext)
   const [forgetPasswordEmail, setForgetPasswordEmail] = useState("")
   const [emailNotFoundError, setEmailNotFoundError] = useState("")
   const navigate = useNavigate()

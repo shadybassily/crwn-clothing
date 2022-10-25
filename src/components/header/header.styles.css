@@ -16,7 +16,7 @@ nav {
   font-size: 20px;
   padding: 0px 20px;
 }
-.header-links li:last-child{
+.header-links li:last-child {
   padding-right: 0px;
 }
 
@@ -32,7 +32,7 @@ nav {
   position: relative;
 }
 .hover-underline-animation:after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
@@ -47,4 +47,23 @@ nav {
 .hover-underline-animation:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+@media (width <800px) {
+  nav {
+    flex-direction: column;
+  }
+  .header-links {
+    display: flex;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.104);
+    justify-content: space-around;
+    width: 100%;
+    padding: 25px 0px 15px;
+  }
+  .header-links li{
+   padding: 0;
+  }
+  .logo {
+    margin-left: -30px;
+  }
 }

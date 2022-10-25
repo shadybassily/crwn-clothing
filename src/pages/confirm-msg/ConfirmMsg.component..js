@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./confirm-msg.styles.css";
-import {appContext} from '../../App'
-import { Link, Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { verifyEmail } from "../../config/firebase";
+import { useSelector
+ } from "react-redux";
 export default function ConfirmMsg() {
   const params = useParams()
   const {state:forgetPasswordEmail} = useLocation()
-  const {currentUser} = useContext(appContext)
+  const currentUser = useSelector(state => state.user.currentUser)
   const navigate = useNavigate()
   
   if(currentUser?.emailVerified === true){
@@ -27,8 +28,9 @@ export default function ConfirmMsg() {
   );
   }
   
-  if(params.opt === "forget-password")
-  {
+  if(currentUser){
+    navigate('/', {replace:true})
+  } else if (params.opt === "forget-password") {
     return (
       <div className="confirmation-page">
         <div className="confirmation-message ">
@@ -41,4 +43,5 @@ export default function ConfirmMsg() {
       </div>
   );
   }
+  
 }

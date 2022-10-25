@@ -1,11 +1,11 @@
-import React, { useContext,useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { appContext } from "../../App";
 import "./email-not-verified.styles.css";
 import { verifyEmail } from "../../config/firebase";
+import { useSelector } from "react-redux";
 export default function EmailNotVerified() {
-  const { currentUser } = useContext(appContext);
-
+  const currentUser = useSelector(state => state.user.currentUser)
+  console.log(currentUser)
   if (currentUser?.emailVerified === false) {
     return (
       <div className="parent-container not-verified">

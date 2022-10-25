@@ -11,26 +11,29 @@ import SignIn from "./pages/signIn-page/SignIn.component";
 //other imports
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
-import { createContext, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { auth } from "./config/firebase";
 import ConfirmMsg from "./pages/confirm-msg/ConfirmMsg.component.";
 import EmailNotVerified from "./components/verify-email/EmailNotVerified.component";
-export const appContext = createContext();
+
+import { useDispatch } from 'react-redux'
+import {setCurrentUser} from './store/slicers/userSlice'
+
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null)
+  const dispatch = useDispatch()
+  
   useEffect(()=>{
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setCurrentUser(user)
+        dispatch(setCurrentUser(user))
       } else {
-        setCurrentUser(null)
+        dispatch(setCurrentUser(null))
       }
     });
-  })
+  }, [])
   return (
     <Router>
-      <appContext.Provider value={{currentUser}}>
         <Header />
         <EmailNotVerified />
         <Routes>
@@ -40,7 +43,6 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/:section" element={<Section />} />
         </Routes>
-      </appContext.Provider>
     </Router>
   );
 }

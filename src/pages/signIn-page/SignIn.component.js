@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import Register from "../../components/forms/registration-form/RegistrationForm.component";
 import SignInForm from "../../components/forms/sign-in-form/SignInForm.component";
 import "./sigin-page.styles.css";
-import { useContext } from "react";
-import { appContext } from "../../App";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 export default function SignIn() {
-  const {currentUser} = useContext(appContext)
+  const currentUser = useSelector(state => state.user.currentUser)
   const navigate = useNavigate()
   //which form the user selects
   //to toggle between them

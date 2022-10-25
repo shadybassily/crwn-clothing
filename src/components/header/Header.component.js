@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { appContext } from "../../App";
+import React from "react";
 
 import "./header.styles.css";
 import logo from "../../assets/images/crown.svg";
@@ -8,9 +7,13 @@ import { useNavigate } from "react-router-dom";
 //auth
 import { auth } from "../../config/firebase";
 import { signOut } from "firebase/auth";
+//redux state
+import { useSelector } from "react-redux";
 
 export default function Header() {
-  const {currentUser} = useContext(appContext)
+  const currentUser = useSelector(state => state.user.currentUser)
+  console.log(currentUser)
+
   const navigate = useNavigate()
   const handleLogOut = async()=>{
     await signOut(auth)
