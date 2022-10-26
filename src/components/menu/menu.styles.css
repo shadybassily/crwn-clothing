@@ -44,7 +44,7 @@
 
 @media (width <800px) {
   .menu-item {
-    width: 65%;
+    width: 70%;
     margin: 5px auto;
   }
   .menu-item .content {

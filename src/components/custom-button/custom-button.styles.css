@@ -9,6 +9,7 @@
   transition: all 0.2s;
   letter-spacing: 1px;
   text-align: center;
+  min-width: 80%;
 }
 .custom-button:hover {
   background-color: rgba(0, 0, 0, 0.878);
@@ -24,10 +25,16 @@
   background-color: #0652dd;
   color: #fff;
 }
-.register-button {
-  width: 80%;
-  margin: 0 auto;
-}
 .brand-icon {
-  padding-right: 15px;
+  padding-right: 5px;
+}
+.or{
+  padding: 20px 3px;
+  color: rgba(0, 0, 0, 0.554);
+}
+.or:before {
+  content: "──────── ";
+}
+.or:after {
+  content: "  ────────";
 }

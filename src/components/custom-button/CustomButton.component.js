@@ -13,6 +13,7 @@ export default function CustomButton(props) {
       </button>
     );
   }
+
   return (
     <button className={`custom-button ${props.className}`}>
       {props.children}

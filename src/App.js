@@ -18,6 +18,7 @@ import EmailNotVerified from "./components/verify-email/EmailNotVerified.compone
 
 import { useDispatch } from 'react-redux'
 import {setCurrentUser} from './store/slicers/userSlice'
+import { cartToggle } from "./store/slicers/cartSlice";
 
 
 function App() {

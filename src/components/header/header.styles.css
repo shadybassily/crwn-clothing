@@ -2,7 +2,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0 27px;
+  padding: 15px 0 27px;
 }
 
 .header-links {
@@ -15,6 +15,7 @@ nav {
   text-transform: uppercase;
   font-size: 20px;
   padding: 0px 20px;
+  
 }
 .header-links li:last-child {
   padding-right: 0px;
@@ -58,12 +59,10 @@ nav {
     border-bottom: 1px solid rgba(128, 128, 128, 0.104);
     justify-content: space-around;
     width: 100%;
-    padding: 25px 0px 15px;
+    padding: 25px 0px 15px 11px;
   }
-  .header-links li{
-   padding: 0;
-  }
-  .logo {
-    margin-left: -30px;
+
+  nav .logo{
+    padding-left: 13px;
   }
 }
