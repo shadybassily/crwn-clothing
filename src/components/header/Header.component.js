@@ -12,13 +12,12 @@ import { auth } from "../../config/firebase";
 import { signOut } from "firebase/auth";
 //redux state
 import { useSelector, useDispatch } from "react-redux";
-import { cartToggle } from "../../store/slicers/cartSlice";
+import { cartToggle } from "../../store/slicers/cart/cartSlice";
 export default function Header() {
   const currentUser = useSelector((state) => state.user.currentUser);
-  const cartHidden = useSelector((state) => state.cart.hidden.payload);
+  const cartHidden = useSelector((state) => state.cart.hidden);
   const dispatch = useDispatch();
 
-  console.log(currentUser);
 
   const navigate = useNavigate();
   const handleLogOut = async () => {
@@ -26,6 +25,7 @@ export default function Header() {
     dispatch(cartToggle(true))
     navigate("/");
   };
+
 
   return (
     <nav className="parent-container">
@@ -69,7 +69,7 @@ export default function Header() {
           </li>
         )}
       </ul>
-      {(!cartHidden && currentUser) && <CartDropDown />}
+      { cartHidden === false && <CartDropDown />}
     </nav>
   );
 }

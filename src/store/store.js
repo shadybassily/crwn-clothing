@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 
 import userReducer from './slicers/userSlice'
-import cartReducer from './slicers/cartSlice'
+import cartReducer from './slicers/cart/cartSlice'
 const rootReducer = combineReducers({
   user:userReducer,
   cart:cartReducer

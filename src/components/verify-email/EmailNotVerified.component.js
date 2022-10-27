@@ -5,7 +5,6 @@ import { verifyEmail } from "../../config/firebase";
 import { useSelector } from "react-redux";
 export default function EmailNotVerified() {
   const currentUser = useSelector(state => state.user.currentUser)
-  console.log(currentUser)
   if (currentUser?.emailVerified === false) {
     return (
       <div className="parent-container not-verified">

@@ -4,19 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 const googleIcon = <FontAwesomeIcon icon={faGoogle} />;
 
-export default function CustomButton(props) {
-  if (props.google) {
-    return (
-      <button onClick={props.googleSignIn} className="custom-button google" >
-        <span className="brand-icon">{googleIcon}</span>
-        {props.children}
-      </button>
-    );
-  }
-
+export default function CustomButton({className, children, ...otherprops}) {
   return (
-    <button className={`custom-button ${props.className}`}>
-      {props.children}
+    <button className={`custom-button ${className}`} {...otherprops }>
+      {className === "google" && <span className="brand-icon ">{googleIcon}</span>}{children}
     </button>
   );
 }

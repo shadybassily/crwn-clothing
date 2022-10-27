@@ -120,7 +120,7 @@ export default function SignInForm() {
       <div className="buttons-container">
         <CustomButton>Sign In</CustomButton>
         <div className="or">or</div>
-        <CustomButton google={true} googleSignIn={googleSignIn}>
+        <CustomButton className="google" onClick={googleSignIn}>
           Continue With Google
         </CustomButton>
       
