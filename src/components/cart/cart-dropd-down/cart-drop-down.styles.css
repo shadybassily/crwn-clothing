@@ -5,8 +5,8 @@
     min-width:240px;
     height: 335px;
     position: absolute;
-    right: 38px;
-    top: 60px;
+    right:2%;
+    top: 75%;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -38,6 +38,7 @@
     height: 110px;
 }
 .cart-item-details{
+    width: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -72,7 +73,7 @@
   }
 @media(width < 800px){
     .cart-dropdown{
-        top: 120px;
-        right: 5%;
+        top: 100%;
+        right: 6%;
     }
 }

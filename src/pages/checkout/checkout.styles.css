@@ -1,0 +1,13 @@
+.pointer{
+    cursor: pointer;
+    font-size: 15px;
+    margin: 0 1px;
+}
+
+.checkout-page .cart-item-img{
+   height: 140px;
+   width: 110px;
+}
+.checkout-details{
+    font-size: 19px;
+}

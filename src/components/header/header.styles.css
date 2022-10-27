@@ -2,7 +2,13 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0 27px;
+  padding: 25px;
+  z-index: 1;
+  background-color:#f5f6fa;
+  margin-bottom: 35px;
+  position: sticky;
+  top: 0;
+  box-shadow: 5px 5px 15px rgba(128, 128, 128, 0.685);
 }
 
 .header-links {
@@ -15,7 +21,6 @@ nav {
   text-transform: uppercase;
   font-size: 20px;
   padding: 0px 20px;
-  
 }
 .header-links li:last-child {
   padding-right: 0px;
@@ -50,19 +55,42 @@ nav {
   transform-origin: bottom left;
 }
 
+
 @media (width <800px) {
   nav {
-    flex-direction: column;
+    justify-content: center;
+    height: 13vh;
+    transition: all 0.5s;
   }
-  .header-links {
-    display: flex;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.104);
-    justify-content: space-around;
-    width: 100%;
-    padding: 25px 0px 15px 11px;
+  .shrinked-nav{
+    transition: all 0.5s;
+    height: 7vh;
+  }
+  .logo{
+    transition: all 0.5s;
+    position: absolute;
+    top:10px;
+    left: 48%;
+    margin-left: -13px;
+  }
+  .hidden-logo{
+    position: absolute;
+    top: -60px;
   }
 
-  nav .logo{
-    padding-left: 13px;
+  .header-links {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin-top: 50px;
+    padding-bottom: 5px;
+    transition: all 0.5s;
   }
+  .shrinked-header-links{
+    margin-top: 0px;
+  }
+  .header-links li {
+    padding: 0px ;
+  }
+
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../store/slicers/cart/cartSlice";
 import CustomButton from "../custom-button/CustomButton.component";
 import './item.styles.css'

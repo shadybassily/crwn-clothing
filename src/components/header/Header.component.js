@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./header.styles.css";
 import logo from "../../assets/images/crown.svg";
 import { Link } from "react-router-dom";
@@ -18,21 +18,33 @@ export default function Header() {
   const cartHidden = useSelector((state) => state.cart.hidden);
   const dispatch = useDispatch();
 
-
   const navigate = useNavigate();
   const handleLogOut = async () => {
     await signOut(auth);
-    dispatch(cartToggle(true))
+    dispatch(cartToggle(true));
     navigate("/");
   };
-
-
+  const [isHidden, setIsHidden] = useState(false);
+  const hideLogoOnScroll = () => {
+    if ((window.scrollY > 50) & (window.innerWidth < 800)) {
+      setIsHidden(true);
+    } else {
+      setIsHidden(false);
+    }
+  };
+  useEffect(() => {
+    console.log(isHidden);
+    window.addEventListener("scroll", hideLogoOnScroll);
+    return () => {
+      window.removeEventListener("scroll", hideLogoOnScroll);
+    };
+  });
   return (
-    <nav className="parent-container">
-      <Link to="/">
-        <img src={logo} alt="logo" className="logo" />
+    <nav className={`${isHidden && "shrinked-nav"}`}>
+      <Link to="/" className={`logo ${isHidden && "hidden-logo"} `}>
+        <img src={logo} alt="logo" className="logo-icon" />
       </Link>
-      <ul className="header-links">
+      <ul className={`header-links ${isHidden && "shrinked-header-links"}`}>
         <li>
           <Link to="/shop" className="header-link hover-underline-animation">
             shop
@@ -50,13 +62,6 @@ export default function Header() {
                 sign out
               </Link>
             </li>
-            <li
-              onClick={() => {
-                dispatch(cartToggle(!cartHidden));
-              }}
-            >
-              <CartIcon />
-            </li>
           </>
         ) : (
           <li>
@@ -68,8 +73,15 @@ export default function Header() {
             </Link>
           </li>
         )}
+        <li
+          onClick={() => {
+            dispatch(cartToggle(!cartHidden));
+          }}
+        >
+          <CartIcon />
+        </li>
       </ul>
-      { cartHidden === false && <CartDropDown />}
+      {cartHidden === false && <CartDropDown />}
     </nav>
   );
 }

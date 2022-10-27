@@ -18,6 +18,7 @@ import EmailNotVerified from "./components/verify-email/EmailNotVerified.compone
 
 import { useDispatch } from 'react-redux'
 import {setCurrentUser} from './store/slicers/userSlice'
+import Checkout from "./pages/checkout/Checkout.component";
 function App() {
 
   const dispatch = useDispatch()
@@ -41,6 +42,7 @@ function App() {
           <Route path="/confirmation/:opt" element={<ConfirmMsg />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/:section" element={<Section />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
     </Router>
   );
