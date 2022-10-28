@@ -2,11 +2,13 @@ import React from "react";
 import "./cart-drop-down.styles.css";
 import Custombutton from "../../custom-button/CustomButton.component";
 import EmptyCart from "../empty-cart/EmptyCart.component";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { cartToggle } from "../../../store/slicers/cart/cartSlice";
 
 export default function CartDropDown() {
   const { cartItems } = useSelector((state) => state.cart);
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   return (
     <div className="cart-dropdown">
@@ -24,7 +26,7 @@ export default function CartDropDown() {
         }) : <EmptyCart />}
       </div>
 
-      {cartItems.length !== 0 && <Custombutton className="checkout" onClick={()=>{navigate('/checkout')}}>GO TO CHECKOUT</Custombutton>}
+      {cartItems.length !== 0 && <Custombutton className="checkout" onClick={()=>{dispatch(cartToggle(true));navigate('/checkout')}}>GO TO CHECKOUT</Custombutton>}
     </div>
   );
 }

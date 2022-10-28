@@ -4,11 +4,11 @@ nav {
   align-items: center;
   padding: 25px;
   z-index: 1;
-  background-color:#f5f6fa;
+  background-color:#fff;
   margin-bottom: 35px;
   position: sticky;
   top: 0;
-  box-shadow: 5px 5px 15px rgba(128, 128, 128, 0.685);
+  box-shadow: 0 15px 35px rgba(128, 128, 128, 0.312);
 }
 
 .header-links {
@@ -77,20 +77,20 @@ nav {
     position: absolute;
     top: -60px;
   }
-
   .header-links {
     display: flex;
     justify-content: space-between;
     width: 95%;
     margin-top: 50px;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
     transition: all 0.5s;
   }
   .shrinked-header-links{
     margin-top: 0px;
+    padding-bottom: 0px;
   }
   .header-links li {
-    padding: 0px ;
+    padding: 0px;
   }
 
 }

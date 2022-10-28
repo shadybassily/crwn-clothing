@@ -1,8 +1,10 @@
+
 .item {
   margin-right: 10px;
   cursor: pointer;
   transition: all 0.3s;
 }
+
 .item:nth-child(4) {
   margin-right: 0;
 }
@@ -22,7 +24,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 5px 3px;
+  padding: 5px 10px;
   height: 50px;
   font-size: 20px;
 }
@@ -33,14 +35,27 @@
   color: black;
   transition: all 0s;
   z-index: 1;
+
 }
+
 .photo:hover > .add-to-cart {
   visibility: visible;
 }
-@media (width < 800px) {
+@media (width < 650px) {
   .photo {
-    width: 180px;
-    height: 230px;
+    width: 220px;
+    height: 250px;
+    background-size: 100% 100%;
+  }
+  .add-to-cart {
+    width: 70%;
+  }
+}
+
+@media (width > 650px) {
+  .photo {
+    width: 230px;
+    height: 270px;
     background-size: 100% 100%;
   }
   .add-to-cart {

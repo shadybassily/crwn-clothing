@@ -20,11 +20,14 @@
   }
   .cart-icon{
     width: 27px;
+    margin-bottom: 3px;
+
   }
   .cart-icons-count{
     position: absolute;
     top: 8px;
     left: 10px;
+    font-size: 15px;
   }
   
 }

@@ -26,7 +26,7 @@ export default function Header() {
   };
   const [isHidden, setIsHidden] = useState(false);
   const hideLogoOnScroll = () => {
-    if ((window.scrollY > 50) & (window.innerWidth < 800)) {
+    if ((window.scrollY > 40) & (window.innerWidth < 800)) {
       setIsHidden(true);
     } else {
       setIsHidden(false);

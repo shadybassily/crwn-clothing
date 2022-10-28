@@ -1,10 +1,11 @@
 .pointer{
     cursor: pointer;
-    font-size: 15px;
 }
 .arrow{
     padding: 0px 3px 2px;
     display: inline-block;
+    font-size: 15px;
+
 }
 .checkout-page .cart-item-img{
    height: 140px;

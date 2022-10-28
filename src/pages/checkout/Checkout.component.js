@@ -7,9 +7,7 @@ import TotalPrice from "../../components/total-price/TotalPrice.component";
 export default function Checkout() {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
-  useEffect(() => {
-    dispatch(cartToggle(true));
-  }, []);
+
   return (
     <div className="parent-container checkout-page">
       <table className="table align-middle text-center">
