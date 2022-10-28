@@ -19,13 +19,25 @@ const addItemToCart = (cartItems, cartItemToAdd) => {
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
 
+const clearItemFromCart = (cartItems, cartItemToClear) => {
+  return cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
+};
+const removeItemFromCart = (cartItems, cartItemToRemove) => {
+  if (cartItemToRemove.quantity === 1) {
+    return clearItemFromCart(cartItems, cartItemToRemove);
+  }
+  return cartItems.map((cartItem) =>
+    cartItem.id === cartItemToRemove.id
+      ? { ...cartItem, quantity: cartItem.quantity - 1 }
+      : cartItem
+  );
+};
 export const getMemoizedCartItems = createDraftSafeSelector(
   (state) => state.cart.cartItems,
   (cartItems) => {
-    console.log('called')
     let count;
-   count = cartItems.reduce((acc, cartItem)=> acc + cartItem.quantity,0)
-   return count <= 9 ? count : '9+'
+    count = cartItems.reduce((acc, cartItem) => acc + cartItem.quantity, 0);
+    return count <= 9 ? count : "9+";
   }
 );
 
@@ -39,8 +51,14 @@ export const cartSlice = createSlice({
     addItem: (state, action) => {
       state.cartItems = addItemToCart(state.cartItems, action.payload);
     },
+    removeItem: (state, action) => {
+      state.cartItems = removeItemFromCart(state.cartItems, action.payload);
+    },
+    clearItem: (state, action) => {
+      state.cartItems = clearItemFromCart(state.cartItems, action.payload);
+    },
   },
 });
-export const { cartToggle, addItem } = cartSlice.actions;
+export const { cartToggle, addItem, clearItem, removeItem } = cartSlice.actions;
 
 export default cartSlice.reducer;

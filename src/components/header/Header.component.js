@@ -33,7 +33,6 @@ export default function Header() {
     }
   };
   useEffect(() => {
-    console.log(isHidden);
     window.addEventListener("scroll", hideLogoOnScroll);
     return () => {
       window.removeEventListener("scroll", hideLogoOnScroll);
