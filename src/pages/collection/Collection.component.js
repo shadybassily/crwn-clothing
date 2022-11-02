@@ -11,7 +11,6 @@ export default function Collection() {
   const state = useSelector(state => state) 
   const collectionItems = selectCollectionItemsByName(state,collection)
 
-  console.log(collectionItems)
   return (
     <div className="parent-container collection">
       <h2 className="title">{params.collection}</h2>

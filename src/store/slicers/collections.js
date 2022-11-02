@@ -5,7 +5,7 @@ const initialState = {
 }
 
 
-const selectCollections = state => state.collections
+const selectCollections = state => state.collections.data
 const selectCollectionName = (state,collectionName) => collectionName
 export const selectCollectionItemsByName = createSelector(
   selectCollections,
