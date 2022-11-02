@@ -5,12 +5,9 @@
   padding: 10px 23px;
   border-radius: 1px;
   margin-top: 5px;
-  font-weight: bold;
   transition: all 0.2s;
-  letter-spacing: 1px;
   text-align: center;
   min-width: 80%;
-  font-family: 'Barlow Condensed', sans-serif;
 }
 .custom-button:hover {
   background-color: rgba(0, 0, 0, 0.878);

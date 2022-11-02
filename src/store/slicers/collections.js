@@ -10,7 +10,7 @@ const selectCollectionName = (state,collectionName) => collectionName
 export const selectCollectionItemsByName = createSelector(
   selectCollections,
   selectCollectionName,
-  (collection, collectionName)=> collection[collectionName].items
+  (collection, collectionName)=> collection[collectionName]?.items
 )
 
 export const collectionsSlice = createSlice({
