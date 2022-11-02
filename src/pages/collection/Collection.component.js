@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Item from "../../components/collection-preview/Item.component";
 import './collection.styles.css'
 import { selectCollectionItemsByName } from "../../store/slicers/collections";
+import Loader from "../../components/loader/Loader.commponent";
 
 export default function Collection() {
   const params = useParams();
@@ -15,10 +16,14 @@ export default function Collection() {
     <div className="parent-container collection">
       <h2 className="title">{params.collection}</h2>
       <div className="items">
-        {collectionItems.map((item) => (
+        {collectionItems?.map((item) => (
           <Item key={item.id} item={item} />
         ))}
-
+          { collectionItems ? collectionItems.map((item) => (
+          <Item key={item.id} item={item} />
+        )) :
+        <Loader />
+          }
       </div>
     </div>
   );
