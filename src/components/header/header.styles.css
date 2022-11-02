@@ -4,7 +4,7 @@ nav {
   align-items: center;
   padding: 25px;
   z-index: 1;
-  background-color:#fff;
+  background-color: #fff;
   margin-bottom: 35px;
   position: sticky;
   top: 0;
@@ -23,7 +23,6 @@ nav {
   padding: 0px 20px;
 }
 .header-links li:last-child {
-  padding-right: 0px;
 }
 
 .header-links li .header-link {
@@ -56,41 +55,33 @@ nav {
 }
 
 
+
 @media (width <800px) {
   nav {
-    justify-content: center;
-    height: 13vh;
+    padding: 5px 0px;
     transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(0px);
   }
-  .shrinked-nav{
+  .shrinked-nav {
+    transform: translateY(-45px);
+  }
+  .logo {
     transition: all 0.5s;
-    height: 7vh;
-  }
-  .logo{
-    transition: all 0.5s;
-    position: absolute;
-    top:10px;
-    left: 48%;
-    margin-left: -13px;
-  }
-  .hidden-logo{
-    position: absolute;
-    top: -60px;
+    height: 45px;
+    display: block;
   }
   .header-links {
     display: flex;
     justify-content: space-between;
     width: 95%;
-    margin-top: 50px;
-    padding-bottom: 15px;
-    transition: all 0.5s;
   }
-  .shrinked-header-links{
-    margin-top: 0px;
-    padding-bottom: 0px;
+  .shrinked-header-links {
   }
   .header-links li {
-    padding: 0px;
+    padding: 0;
+    width: 65px;
+    text-align: center;
   }
-
 }

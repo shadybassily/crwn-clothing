@@ -20,3 +20,13 @@
     text-transform: none;
     margin-top: -15px;
 }
+
+.confirmation-page .confirmation-message{
+    border: 1px solid;
+}
+
+@media (width < 800px) {
+    .confirmation-page .confirmation-message{
+        width: 95%;
+    }
+}

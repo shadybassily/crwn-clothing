@@ -1,4 +1,4 @@
-import { createSlice, createDraftSafeSelector } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 const initialState = {
   hidden: true,
   cartItems: [],
@@ -32,7 +32,7 @@ const removeItemFromCart = (cartItems, cartItemToRemove) => {
       : cartItem
   );
 };
-export const getMemoizedCartItems = createDraftSafeSelector(
+export const getMemoizedCartItems = createSelector(
   (state) => state.cart.cartItems,
   (cartItems) => {
     let count;

@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 //Components
 import CartIcon from "../cart/cart-icon/CartIcon.component";
 import CartDropDown from "../cart/cart-dropd-down/CartDropDown.component";
-
 //auth
 import { auth } from "../../config/firebase";
 import { signOut } from "firebase/auth";
@@ -26,7 +25,7 @@ export default function Header() {
   };
   const [isHidden, setIsHidden] = useState(false);
   const hideLogoOnScroll = () => {
-    if ((window.scrollY > 40) & (window.innerWidth < 800)) {
+    if ((window.scrollY > 53) & (window.innerWidth < 800)) {
       setIsHidden(true);
     } else {
       setIsHidden(false);
@@ -40,9 +39,11 @@ export default function Header() {
   });
   return (
     <nav className={`${isHidden && "shrinked-nav"}`}>
-      <Link to="/" className={`logo ${isHidden && "hidden-logo"} `}>
+     <div>
+     <Link to="/" className={`logo ${isHidden && "hidden-logo"} `}>
         <img src={logo} alt="logo" className="logo-icon" />
       </Link>
+     </div>
       <ul className={`header-links ${isHidden && "shrinked-header-links"}`}>
         <li>
           <Link to="/shop" className="header-link hover-underline-animation">
@@ -50,7 +51,7 @@ export default function Header() {
           </Link>
         </li>
         <li>
-          <Link to="/shop" className="header-link hover-underline-animation">
+          <Link to="/contact" className="header-link hover-underline-animation">
             contact
           </Link>
         </li>

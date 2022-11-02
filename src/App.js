@@ -9,19 +9,21 @@ import Header from "./components/header/Header.component";
 import SignIn from "./pages/signIn-page/SignIn.component";
 
 //other imports
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
-import { auth } from "./config/firebase";
+import { auth, db, getCollectionsFromFireBase } from "./config/firebase";
 import ConfirmMsg from "./pages/confirm-msg/ConfirmMsg.component.";
 import EmailNotVerified from "./components/verify-email/EmailNotVerified.component";
 
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "./store/slicers/userSlice";
 import Checkout from "./pages/checkout/Checkout.component";
+import { collection, onSnapshot } from "firebase/firestore";
+import { setShopData } from "./store/slicers/collections";
 function App() {
   const dispatch = useDispatch();
-
+  //setting the user
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -31,8 +33,19 @@ function App() {
       }
     });
   }, []);
+
+  //calling the shop data from Firebase
+
+useEffect(() => {
+  const collectionsRef = collection(db, 'collection')
+  onSnapshot(collectionsRef, async ()=> {
+   const collectionsMap = await getCollectionsFromFireBase(collectionsRef)
+   dispatch(setShopData(collectionsMap))
+  })
+  }, []);
+
   return (
-    <Router>
+    <>
       <Header />
       <EmailNotVerified />
       <Routes>
@@ -43,7 +56,7 @@ function App() {
         <Route  path="shop/:collection" element={<Collection />}/>
         <Route path="checkout" element={<Checkout />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
 .form {
-  padding: 35px 35px 25px;
+  padding: 0px 35px 25px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   box-shadow: 10px 10px 15px rgba(128, 128, 128, 0.233);
 }
 .form h2 {
-  padding: 25px;
+  padding: 15px;
 }
 .forgot-password {
   width: 100%;
@@ -22,10 +22,19 @@
   flex-direction: column;
   align-items: center;
 }
-
+.or{
+  padding: 20px 3px;
+  color: rgba(0, 0, 0, 0.554);
+}
+.or:before {
+  content: "──── ";
+}
+.or:after {
+  content: "  ────";
+}
 @media (width <= 750px) {
   .form {
-    width: 75%;
+    width: 100%;
   }
   .buttons-container {
     flex-direction: column;

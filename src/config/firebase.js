@@ -11,6 +11,7 @@ import {
   getDocs,
   getFirestore,
   query,
+  snapshotEqual,
   where,
 } from "firebase/firestore";
 
@@ -68,3 +69,20 @@ export const verifyEmail = async (user) => {
   await sendEmailVerification(user);
 };
 
+export const getCollectionsFromFireBase = async (collectionRef) => {
+  const querySnapShot = await getDocs(collectionRef)
+  const transformedData = querySnapShot.docs.map(doc => {
+    const {title, items} = doc.data()
+    return {
+      title,
+      items,
+      id: doc.id,
+      routeName : encodeURI(title.toLowerCase())
+    }
+  })
+ 
+  return transformedData.reduce((acc, collection) => {
+    acc[collection.title.toLowerCase()] =collection
+    return acc
+  },{})
+};

@@ -1,6 +1,7 @@
 .collection {
 }
-.collection h2 {
+.collection .title {
+    width: 100%;
     text-transform: capitalize;
     text-align: center;
     padding: 25px 0;
@@ -14,23 +15,27 @@
     justify-content: start;
 }
 .collection .items .item {
-    /* border: 1px solid rgba(0, 0, 0, 0.352); */
+    margin: 10px auto;
+    width: 35%;
 }
-
+.collection .items .item .photo{
+    width: 100%;
+    margin: 0 auto;
+}
 @media (width < 800px){
     .collection .items {
-        width: 80%;
+        width: 100%;
     }
     .collection .items .item {
         margin: 10px auto;
+        width: 46%;
     }
+    .collection .items .item .photo{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .collection .items .item .details .name-price{
+        /* border: 1px solid; */
+      }
 }
 
-@media (width > 800px){
-    .collection .items {
-        width: 80%;
-    }
-    .collection .items .item {
-        margin: 10px auto;
-    }
-}
