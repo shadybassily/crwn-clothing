@@ -16,9 +16,7 @@ export default function Collection() {
     <div className="parent-container collection">
       <h2 className="title">{params.collection}</h2>
       <div className="items">
-        {collectionItems?.map((item) => (
-          <Item key={item.id} item={item} />
-        ))}
+
           { collectionItems ? collectionItems.map((item) => (
           <Item key={item.id} item={item} />
         )) :

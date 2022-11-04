@@ -13,6 +13,7 @@ import { signOut } from "firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { cartToggle } from "../../store/slicers/cart/cartSlice";
 export default function Header() {
+  
   const currentUser = useSelector((state) => state.user.currentUser);
   const cartHidden = useSelector((state) => state.cart.hidden);
   const dispatch = useDispatch();
@@ -51,7 +52,7 @@ export default function Header() {
           </Link>
         </li>
         <li>
-          <Link to="/contact" className="header-link hover-underline-animation">
+          <Link className="header-link hover-underline-animation">
             contact
           </Link>
         </li>

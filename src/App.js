@@ -21,6 +21,8 @@ import { setCurrentUser } from "./store/slicers/userSlice";
 import Checkout from "./pages/checkout/Checkout.component";
 import { collection, onSnapshot } from "firebase/firestore";
 import { setShopData } from "./store/slicers/collections";
+import Footer from "./components/footer/Footer.component";
+import ScrollToTop from "./components/scroll-to-top/ScrollToTop.component";
 function App() {
   const dispatch = useDispatch();
   //setting the user
@@ -35,27 +37,28 @@ function App() {
   }, []);
 
   //calling the shop data from Firebase
-
-useEffect(() => {
-  const collectionsRef = collection(db, 'collection')
-  onSnapshot(collectionsRef, async ()=> {
-   const collectionsMap = await getCollectionsFromFireBase(collectionsRef)
-   dispatch(setShopData(collectionsMap))
-  })
+  useEffect(() => {
+    const collectionsRef = collection(db, 'collection')
+    onSnapshot(collectionsRef, async ()=> {
+     const collectionsMap = await getCollectionsFromFireBase(collectionsRef)
+     dispatch(setShopData(collectionsMap))
+    })
   }, []);
 
   return (
     <>
       <Header />
+      <ScrollToTop />
       <EmailNotVerified />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="sign-in" element={<SignIn />} />
         <Route path="confirmation/:opt" element={<ConfirmMsg />} />
-        <Route path="shop" element={<Shop />}/>
-        <Route  path="shop/:collection" element={<Collection />}/>
+        <Route path="shop" element={<Shop />} />
+        <Route path="shop/:collection" element={<Collection />} />
         <Route path="checkout" element={<Checkout />} />
       </Routes>
+      <Footer />
     </>
   );
 }

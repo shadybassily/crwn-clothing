@@ -1,16 +1,15 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  data:{}
+  data:null
 }
 
-
-const selectCollections = state => state.collections.data
+export const selectAllCollections = (state)=>state.collections.data
 const selectCollectionName = (state,collectionName) => collectionName
 export const selectCollectionItemsByName = createSelector(
-  selectCollections,
+  selectAllCollections,
   selectCollectionName,
-  (collection, collectionName)=> collection[collectionName]?.items
+  (collection, collectionName)=> collection ? collection[collectionName]?.items : null
 )
 
 export const collectionsSlice = createSlice({
@@ -24,5 +23,4 @@ export const collectionsSlice = createSlice({
 });
 export const { setShopData } = collectionsSlice.actions
 
-export const selectAllCollections = (state)=>state.collections.data
 export default collectionsSlice.reducer
