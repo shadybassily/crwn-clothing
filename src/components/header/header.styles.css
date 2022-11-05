@@ -55,6 +55,14 @@ nav {
 }
 
 
+.find-us-link:hover .find-us-dropDown{
+  height: fit-content;
+  visibility: visible;
+  transition: all 0.3s;
+  padding: 0 0 15px;
+
+}
+
 
 @media (width <800px) {
   nav {

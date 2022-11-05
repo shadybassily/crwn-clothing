@@ -12,13 +12,17 @@ import { signOut } from "firebase/auth";
 //redux state
 import { useSelector, useDispatch } from "react-redux";
 import { cartToggle } from "../../store/slicers/cart/cartSlice";
+import FindUs from "../find-us/FindUs.component";
+
 export default function Header() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   
   const currentUser = useSelector((state) => state.user.currentUser);
   const cartHidden = useSelector((state) => state.cart.hidden);
-  const dispatch = useDispatch();
+  
 
-  const navigate = useNavigate();
+  
   const handleLogOut = async () => {
     await signOut(auth);
     dispatch(cartToggle(true));
@@ -52,9 +56,12 @@ export default function Header() {
           </Link>
         </li>
         <li>
-          <Link className="header-link hover-underline-animation">
-            contact
+          <Link className="header-link hover-underline-animation find-us-link" >
+            find us
+            <FindUs />
           </Link>
+          
+          
         </li>
         {currentUser ? (
           <>

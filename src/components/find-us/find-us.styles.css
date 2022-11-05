@@ -1,0 +1,27 @@
+.find-us-dropDown {
+  position: absolute;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 0%;
+  width: 100%;
+  top: 105%;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.find-us-dropDown .social-media-icon {
+  width: 25px;
+  margin-top: 15px;
+  transition: all 0.2s;
+}
+.fb:hover{
+    color: rgba(11, 11, 192, 0.903);
+}
+.tw:hover{
+    color: lightblue;
+}
+.ig:hover{
+    color: orangered;
+}

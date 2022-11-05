@@ -21,7 +21,6 @@ import { setCurrentUser } from "./store/slicers/userSlice";
 import Checkout from "./pages/checkout/Checkout.component";
 import { collection, onSnapshot } from "firebase/firestore";
 import { setShopData } from "./store/slicers/collections";
-import Footer from "./components/footer/Footer.component";
 import ScrollToTop from "./components/scroll-to-top/ScrollToTop.component";
 function App() {
   const dispatch = useDispatch();
@@ -58,7 +57,6 @@ function App() {
         <Route path="shop/:collection" element={<Collection />} />
         <Route path="checkout" element={<Checkout />} />
       </Routes>
-      <Footer />
     </>
   );
 }
